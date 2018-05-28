@@ -146,6 +146,40 @@ class Blog {
         //echo "New record created successfully. Last inserted ID is: " . $last_id;
         return $last_id;
     }
+    
+        const AllowedTypes = ['image/jpeg', 'image/jpg'];
+    const InputKey = 'blog_image';
+
+    //die() function calls replaced with trigger_error() calls
+    //replace with structured exception handling
+    public static function uploadFile() {
+        var_dump($_FILES);
+        if (empty($_FILES[self::InputKey])) {
+            //die("File Missing!");
+            trigger_error("File Missing!");
+        }
+        if ($_FILES[self::InputKey]['error'] > 0) {
+            trigger_error("Handle the error! " . $_FILES[InputKey]['error']);
+        }
+        if (!in_array($_FILES[self::InputKey]['type'], self::AllowedTypes)) {
+            trigger_error("Handle File Type Not Allowed: " . $_FILES[self::InputKey]['type']);
+        }
+        $tempFile = $_FILES[self::InputKey]['tmp_name'];
+        $im = file_get_contents($tempFile);
+        
+        //data:image/jpeg;base64,asdasdasdasd
+        $imdata = sprintf("data:%s;base64,%s",
+            $_FILES[self::InputKey]['type'],
+            base64_encode($im)
+        );      
+
+        //Clean up the temp file
+        if (file_exists($tempFile)) {
+            unlink($tempFile);
+        }
+        return $imdata;
+    }
+  
     public static function delete($id) {
         $db = Db::getInstance();
         $id = intval($id);
