@@ -5,7 +5,7 @@
     <div>
         <p> Title: <?= $blog->blog_title; ?></p>
         <p> Date: <?= $blog->date_created; ?></p>
-        <p>Summary: <?= $blog ->blog_summary; ?></p>
+        <p>Summary: <?= html_entity_decode($blog->blog_summary); ?></p>
     </div>
     <div>
          <?php if (!empty($_SESSION) ) { if ($_SESSION['user_id']==$blog->user_id) {?>
