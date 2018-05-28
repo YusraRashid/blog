@@ -153,7 +153,6 @@ class Blog {
     //die() function calls replaced with trigger_error() calls
     //replace with structured exception handling
     public static function uploadFile() {
-        var_dump($_FILES);
         if (empty($_FILES[self::InputKey])) {
             //die("File Missing!");
             trigger_error("File Missing!");

@@ -1,69 +1,102 @@
 <?php
-
-/* 
- * Copy from Peter's you can delete all. this is only for reference
+/*
+ * Copied from peters PHP
+ * please change as you like
  */
 
-
+session_start();
 ?>
 
-<!DOCTYPE html>
-<html>
-  <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="views/css/main.css">
-<title>Blog</title>
+    <!DOCTYPE html>
+    <html>
 
-  </head>
-  <body>
-    <ul>
-        <?php
-        if ( !isset($_SESSION) ) {
-            session_start();
-}
-        ?>
-        <li style="float:left"><a class="active" href="?controller=blog&action=viewAll">Home</a></li>  
-        <li style="float:left"><a href="?controller=blog&action=create">Create Blog</a></li> 
-                
-        <?php 
-          if (empty($_SESSION['username'])){ 
-        ?>
-        <li><a href="?controller=user&action=login">Login</a></li>
-        <li><a href="?controller=user&action=register">Create Account</a></li>
-        <?php } else{ 
-            $name = $_SESSION['username']; ?>              
-        <li><a href="?controller=user&action=logout">Sign Out</a></li>       
-        <li><a href='?controller=user&action=show'><?=$name; ?></a></li>
-         <?php } ?>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="views/css/main.css">
 
-    </ul>
+        <title>Blog</title>
+    </head>
 
-    <?php require_once('routes.php'); ?>
-   <div class="footer w3-text-dark-gray">
-    <footer>       
-        For support contact us at support@BlogsAreUs.com <br>
-         Created by The6Rogues &COPY; <?= date('Y'); ?>
-     <!--   Copyright &COPY; <?= date('Y'); ?> -->
-    
-     <?php /*
-        if ( !isset($_SESSION) ) {
-            echo "session is not set </br>";
-        }else{
-            echo "session is set </br>";
-        }
-     
-         
-        if ( empty($_SESSION) ) {
-            echo "session is empty </br>";
-        }else{
-            echo "session isnot empty </br>";
-        }
-      
-        var_dump($_SESSION);  */?>
-    </footer>
-   </div>
-  </body>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <body>
+        <div class="modal fade">
+            <div class="modal-dialog">
+                <form action="index.php?controller=user&action=login" method="POST">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <a class="close" data-dismiss="modal">×</a>
+                            <h3>Login to Your Account</h3>
+                        </div>
+                        <div class="modal-body">
+                            <input type="text" name="username" placeholder="Username">
+                            <input type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" name="login" class="btn btn-success" value="Login">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <ul>
+                <li style="float:left">
+                    <a class="active" href="?controller=blog&action=viewAll">Home</a>
+                </li>
+                <li style="float:left">
+                    <a href="?controller=blog&action=create">Create Blog</a>
+                </li>
+
+
+                <?php if (empty($_SESSION['user_id'])) { ?>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target=".modal">Login</a>
+                    </li>
+                    <li>
+                        <a href="?controller=user&action=register">Create Account</a>
+                    </li>
+                <?php } else { ?>
+                    <li>
+                        <a href="?controller=user&action=logout">Sign Out</a>
+                    </li>
+                    <li>
+                        <a href='?controller=user&action=show'>
+                            <?= $_SESSION['username']; ?>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+
+            <?php
+            require_once('connection.php');
+
+            if (isset($_GET['controller']) && isset($_GET['action'])) {
+                $controller = $_GET['controller'];
+                $action = $_GET['action'];
+            } else {
+                $controller = 'blog';
+                $action = 'viewAll';
+            }
+            ?>
+
+                <div class="blog-content-container">
+                    <?php
+                require_once('routes.php');
+                ?>
+                </div>
+                <!--end of php-->
+        </div>
+        <div class="footer w3-text-dark-gray">
+            <footer>
+                For support contact us at support@BlogsAreUs.com ~ Created by The6Rogues &COPY;
+                <?= date('Y'); ?>
+                    <!--   Copyright &COPY; <?= date('Y'); ?> -->
+            </footer>
+        </div>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
         <!-- Include external JS libs. -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
@@ -83,26 +116,27 @@
                 ];
 
                 $('#edit')
-                        .froalaEditor({
-                            heightMin: 250,
-                        }).on('froalaEditor.image.beforeUpload', function (e, editor, files) {
-                    if (files.length) {
-                        // Create a File Reader.
-                        var reader = new FileReader();
-                        // Set the reader to insert images when they are loaded.
-                        reader.onload = function (e) {
-                            var result = e.target.result;
-                            editor.image.insert(result, null, null, editor.image.get());
-                        };
-                        // Read image as base64.
-                        reader.readAsDataURL(files[0]);
-                    }
-                    editor.popups.hideAll();
-                    // Stop default upload chain.
-                    return false;
-                })
+                    .froalaEditor({
+                        heightMin: 250,
+                    }).on('froalaEditor.image.beforeUpload',function (e, editor, files) {
+                        if (files.length) {
+                            // Create a File Reader.
+                            var reader = new FileReader();
+                            // Set the reader to insert images when they are loaded.
+                            reader.onload = function (e) {
+                                var result = e.target.result;
+                                editor.image.insert(result, null, null, editor.image.get());
+                            };
+                            // Read image as base64.
+                            reader.readAsDataURL(files[0]);
+                        }
+                        editor.popups.hideAll();
+                        // Stop default upload chain.
+                        return false;
+                    });
             });
-
         </script>
 
-</html>
+    </body>
+
+    </html>
