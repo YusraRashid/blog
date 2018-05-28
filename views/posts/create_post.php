@@ -24,6 +24,11 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <input type="file" name="blog_image" id="blog_image" >
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-10 col-md-offset-1" style="margin-top:10px;">
                 <textarea id="edit" name="post_body"></textarea>
             </div>
@@ -31,12 +36,12 @@
         
         <div class="row">
             <div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
-                <input type="submit" href="?controller=post&action=create" />
+                <input type="submit" name="submit" />
             </div>            
         </div>
     </div>
-    <!--<input type="hidden" name="blog_id" value="<?= $_GET['blog_id'] ?>"/> -->          
+    <input type="hidden" name="blog_id" value="<?= $_GET['blog_id'] ?>"/>        
 </form>
-<-<!-- navigate back -->
+<!-- navigate back -->
 <a href="?controller=blog&action=show&blog_id=<?= $_GET['blog_id']; ?>">Cancel</a>
 

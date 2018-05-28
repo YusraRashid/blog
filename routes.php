@@ -43,7 +43,7 @@ $controllers = array('pages' => ['home', 'error'],
     if (in_array($action, $controllers[$controller])) {
       call($controller, $action);
     } else {
-        echo "not calling method";
+        
       call('pages', 'error');
     }
   } else {
