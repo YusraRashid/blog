@@ -32,12 +32,10 @@
      </div>
      <div>
         
-         
-          </textarea></p>
                 
-        <p><textarea class="post_body" name = "post_body" readonly rows="15" cols="80"><?php echo $post->post_body ;?>
-        
-        </textarea></p>
+        <p>
+        <?php echo html_entity_decode($post->post_body) ;?>
+        </p>
      </div>
           <div>
          

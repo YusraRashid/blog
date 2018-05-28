@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <?php
 // leave this in
@@ -18,7 +18,7 @@ and is wrapped around the whole page content, except for the footer in this exam
         <!-- Grid -->
         <div class="container">
             <h1><b>Welcome to BlogsAreUs</b></h1>
-            <p class="">Latest blog's<span class="w3-tag"></span></p>
+            <p class="">Latest blogs<span class="w3-tag"></span></p>
 
             <div class="row display-flex">
                 <!-- Blog entries -->
