@@ -87,6 +87,10 @@ h1 {
     margin-top: 0px;    
 }
 
+h3 {
+    color: #ddd;
+}
+
 img.a {
     display: block;
     margin-left: auto;

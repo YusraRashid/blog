@@ -18,7 +18,7 @@ and is wrapped around the whole page content, except for the footer in this exam
         <!-- Grid -->
         <div class="container">
             <h1><b>Welcome to BlogsAreUs</b></h1>
-            <p class="">Latest blogs<span class="w3-tag"></span></p>
+            <h3>Latest blogs</h3>
 
             <div class="row display-flex">
                 <!-- Blog entries -->
