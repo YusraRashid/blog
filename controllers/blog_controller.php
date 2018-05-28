@@ -65,8 +65,8 @@ class BlogController {
             }
             else{ 
                 $blog_id = Blog::create();
-                $blogs = Blog::find($blog_id);
-                return call('blog', 'show');
+                //$blogs = Blog::find($blog_id);
+                return call('blog', 'viewAll');
             }
         }
         else{

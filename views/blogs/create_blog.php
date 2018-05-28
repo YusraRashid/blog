@@ -40,7 +40,7 @@ You can use a div tag as well.
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1" style="margin-top:20px;">
-                <input type="submit">
+                <input type="submit" href="?controller=blog&action=create" value ="submit">
             </div>            
         </div>
     </div>

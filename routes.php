@@ -41,8 +41,10 @@ $controllers = array('pages' => ['home', 'error'],
   // to the error action of the pages controller
   if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
+        echo "callin";
       call($controller, $action);
     } else {
+        echo "not calling method";
       call('pages', 'error');
     }
   } else {

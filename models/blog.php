@@ -117,9 +117,9 @@ class Blog {
         $req = $db->prepare("INSERT into BLOGS(blog_title, topic, blog_summary, user_id, date_created, blog_image) values (:blog_title, :topic, :blog_summary, :user_id, :date_created, :blog_image)");
         $req->bindParam(':blog_title', $blog_title);
         $req->bindParam(':topic', $topic);
-        $req->bindParam('blog_summary', $blog_summary);
-        $req->bindParam('user_id', $user_id);
-        $req->bindParam('date_created', $date_created);
+        $req->bindParam(':blog_summary', $blog_summary);
+        $req->bindParam(':user_id', $user_id);
+        $req->bindParam(':date_created', $date_created);
         $req->bindParam(':blog_image', $blog_image);
         
         if (isset($_POST['blog_title']) && $_POST['blog_title'] != "") {
@@ -171,12 +171,11 @@ class Blog {
         $imdata = sprintf("data:%s;base64,%s",
             $_FILES[self::InputKey]['type'],
             base64_encode($im)
-        );      
-
+        );              
         //Clean up the temp file
         if (file_exists($tempFile)) {
             unlink($tempFile);
-        }
+        }       
         return $imdata;
     }
   
