@@ -13,9 +13,6 @@
 and is wrapped around the whole page content, except for the footer in this example -->
 <div>
     <!-- Header -->
-    <div class="header-container w3-center w3-padding-hor-32 bg3"> 
-    </div>
-
     <div class="w3-container w3-center w3-padding-hor-32 bg4"> 
 
         <!-- Grid -->
