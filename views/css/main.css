@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : ichi
 */
 
+/* ichi added for soace around forms*/
+#forms {
+    padding: 50px;
+}
 html {
     /*        color: #000 !important;
       background:-webkit-linear-gradient(top,#dfe5e8 25%,#becbd2 75%) ;

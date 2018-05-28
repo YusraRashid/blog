@@ -112,10 +112,10 @@ class BlogController {
     
     public function delete() {
         
-        Blog::remove($_GET['blog_id']);
+        Blog::delete($_GET['blog_id']);
         // or return all blog
         $blogs = Blog::all();
-        require_once('views/blogs/readAll_blog.php');
+        require_once('views/blogs/viewAll_blog.php');
         // can I return call ("blog", "viewAll")
       }      
     }  

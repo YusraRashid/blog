@@ -6,7 +6,7 @@
  */
 
 ?>
-       
+<section style = "margin: 20px 100px 100px 100px">      
 <h1>Change on your Account</h1>
         
 <h2>Change where need to be</h2>
@@ -23,7 +23,8 @@
     <input type="submit" value = "Submit" href="?controller=user&action=update" />
     <!--not sure if it works -->
     <a type= "button" href="?controller=blog&action=viewAll">Cancel</a>
-
+    </form>
+ </section>
 <script>
     var password = document.getElementById("password")
       , confirm_password = document.getElementById("confirm_password");
@@ -39,10 +40,6 @@
     password.onchange = validatePassword;
     confirm_password.onkeyup = validatePassword;
 </script>        
-
-    <?PHP
-    // print_r($_POST)   
-    ?>
 
 
 

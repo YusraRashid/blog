@@ -122,7 +122,8 @@ class Post
 
     const AllowedTypes = ['image/jpeg', 'image/jpg'];
     const InputKey = 'myUploader';
-
+/*
+ * viv's add
     public static function add($blogId)
     {
         $db = Db::getInstance();
@@ -145,6 +146,35 @@ class Post
         if (!empty($_FILES[self::InputKey]['myUpload'])) {
             Image::encodeImage();
         }
+    }
+ 
+ */
+    // return last id
+    public static function add()
+    {
+        $db = Db::getInstance();
+        $req = $db->prepare("Insert into POSTS (blog_id, post_title, post_body, created_at,
+            updated_at) values (:blog_id, :post_title, :post_body, now(), now())");
+        $req->bindparam(':blog_id', $blogId);
+        $req->bindParam(':post_title', $postTitle);
+        $req->bindParam(':post_body', $postBody);
+        // set parameters and execute
+        if (isset($_POST['post_title']) && $_POST['post_title'] != "") {
+            $filteredPostTitle = filter_input(INPUT_POST, 'post_title', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['post_body']) && $_POST['post_body'] != "") {
+            $filteredPostBody = filter_input(INPUT_POST, 'post_body', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        if (isset($_POST['blog_id']) && $_POST['blog_id'] != "") {
+            $filteredBlogId = filter_input(INPUT_POST, 'blog_id', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
+        $postTitle = $filteredPostTitle;
+        $postBody = $filteredPostBody;
+        $blogId = $filteredBlogId;
+        $req->execute();
+        $last_id = $db->lastInsertId();
+        return $last_id;
+        
     }
     public static function remove($id)
     {

@@ -37,12 +37,17 @@ class PostController {
             require_once('views/posts/create_post.php');
         } else {
             
-            //Create post, then display all blog posts 
-            Post::add($_GET['blog_id']);
-            
-              call('blog', 'show'); 
-           //$posts = Post::all($_GET['blog_id']); //$posts is used within the view
-           //require_once('views/posts/viewAll_post.php');
+            // get post id
+            $post_id = Post::add();
+            // get post object
+            $post = Post::find($post_id);
+            // blog - viewAll function manually as there is no $_GET
+            $blog = Blog::find($post->blog_id);
+ 
+            require_once('views/blogs/show_blog.php'); 
+            $posts = Post::all($post->blog_id);
+            require_once('views/posts/viewAll_post.php');
+
         }
     }
     

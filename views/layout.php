@@ -39,7 +39,7 @@
     </ul>
 
     <?php require_once('routes.php'); ?>
-   <div class="footer w3-text-dark-gray">
+   <div class="footer w3-text-dark-gray" style = "margin-top: 30px;">
     <footer>       
         For support contact us at support@BlogsAreUs.com <br>
          Created by The6Rogues &COPY; <?= date('Y'); ?>
