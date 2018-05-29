@@ -16,7 +16,7 @@
     </div>
     <?php // update delete need id - codein php by controller ?>
     <a class ="button" href="?controller=user&action=update" >Update your profile</a>
-    <a class ="button" href="?controller=user&action=delete" >Delete your profile</a>
+<!--    <a class ="button" href="?controller=user&action=delete" >Delete your profile</a> -->
     <a class ="button" href="?controller=blog&action=viewAll" >Back to home page</a>
     
 </section>
