@@ -7,10 +7,10 @@
 
 ?>
 <section style = "margin: 20px 100px 100px 100px">      
-<h1>Change on your Account</h1>
+<h1>Update your Account</h1>
         
-<h2>Change where need to be</h2>
-<p>You must add your current password or new password on the both password and confirm your password fields </P>        
+<!--<h2>Change where need to be</h2>-->
+<p>To change your password, enter and confirm your new password in the fields blow:</P>        
     <form  action="" method="post" >
 
         <p>First name: <input type="text" name="first_name" value="<?= $user->first_name ?>" /></p>

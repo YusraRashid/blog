@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css" />
 <div class="bg4">
     <h1>Create Blog</h1>
-    <p>Create a tag that we will use as the editable area.</p>
+    <p class = "sub-heading1">Capture your audience with your title and summary!</p>
     <!--You can use a div tag as well.-->
     <form action="index.php?controller=blog&action=create" method="POST" enctype="multipart/form-data">
 
