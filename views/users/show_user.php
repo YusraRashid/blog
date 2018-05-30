@@ -8,11 +8,12 @@
 <section>
     <div>
         <h2> Your profile </h2>
-        <p> First name:<?= $user->first_name; ?></p>
+        <br>
+        <p> First name: <?= $user->first_name; ?></p>
         <p> Last name: <?= $user->last_name; ?></p>
-        <p> Your Username: <?= $user->username; ?></p>
-        <p> your email: <?= $user->email; ?></p>
-        
+        <p> Username: <?= $user->username; ?></p>
+        <p> Email: <?= $user->email; ?></p>
+        <br>
     </div>
     <?php // update delete need id - codein php by controller ?>
     <a class ="button" href="?controller=user&action=update" >Update your profile</a>

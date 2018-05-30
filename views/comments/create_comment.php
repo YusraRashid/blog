@@ -12,7 +12,8 @@
 </style>
 <section>
     <div>
-    <h3>Add comment here!</h3>
+    <h3>Add your comment here!</h3>
+    <br>
         <form action="" method="post" >
        
             <textarea class="comment_body" name="comment_body" rows="5" cols="60" placeholder="Write your Story here">

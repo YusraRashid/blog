@@ -1,6 +1,6 @@
  <section>
 
-    <p>All comments:</p>
+    <p>Comments</p>
     <?php if(empty($comments)){ 
             echo "Noone has commented on this post yet";}
         
