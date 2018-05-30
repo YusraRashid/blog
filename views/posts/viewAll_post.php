@@ -13,7 +13,7 @@
         <p>All posts:</p>
 
 <?php foreach($posts as $post) { ?>
-        
+
   <p>
   <p><?php //echo  $post->blog->blog_title.' '.$post->post_title ;
   echo  $post->post_title ;
