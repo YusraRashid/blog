@@ -14,7 +14,7 @@
 
 <?php foreach($posts as $post) { ?>
         
-  <p>
+  <p>Test
   <p><?php //echo  $post->blog->blog_title.' '.$post->post_title ;
   echo  $post->post_title ;
   ?>
