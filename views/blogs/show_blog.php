@@ -8,7 +8,7 @@
         <p>Summary: <?= html_entity_decode($blog->blog_summary); ?></p>
     </div>
     <div>
-         <?php if (!empty($_SESSION) ) { if ($_SESSION['user_id']==$blog->user_id) {?>
+         <?php if (!isset($_SESSION) ) { if ($_SESSION['user_id']==$blog->user_id) {?>
         <a href="?controller=post&action=create&blog_id=<?= $blog->id ?>" class="button js-button" role="button">Create Post</a>
         <a href="?controller=blog&action=update&blog_id=<?= $blog->id ?>" class="button js-button" role="button">Edit Blog</a>
         <a href="?controller=blog&action=delete&blog_id=<?= $blog->id ?>" class="button js-button" role="button">Delete Blog</a>
